@@ -1,0 +1,241 @@
+/* --- 기본 초기화 --- */
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+  font-family: 'Pretendard', -apple-system, sans-serif;
+  user-select: none; /* 텍스트 선택 방지 */
+}
+
+/* 모바일 브라우저 높이 이슈 해결 (dvh) */
+html, body {
+  height: 100%;
+  height: 100dvh;
+  background-color: #f4f1ea; /* 따뜻한 양피지 색상 */
+}
+
+body {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+/* --- 앱 컨테이너 (모바일 기본) --- */
+#app {
+  width: 100%;
+  height: 100%;
+  background-color: #ffffff;
+  display: flex;
+  flex-direction: column;
+  position: relative;
+}
+
+/* --- PC & 태블릿 반응형 (여백 활용) --- */
+@media (min-width: 768px) {
+  body {
+    background-color: #2c2c2c; /* PC에서는 다크한 배경 */
+    background-image: radial-gradient(#444 1px, transparent 1px);
+    background-size: 20px 20px;
+  }
+  
+  #app {
+    height: 90%;
+    max-height: 900px;
+    max-width: 700px;
+    border-radius: 30px;
+    box-shadow: 0 20px 50px rgba(0,0,0,0.4);
+    overflow: hidden;
+    border: 8px solid #740001; /* 그리핀도르 테두리 */
+  }
+}
+
+/* --- 공통 유틸 --- */
+.screen {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+}
+.flex-center {
+  justify-content: center;
+  align-items: center;
+}
+
+/* --- 시작 화면 --- */
+#start-screen {
+  background-color: #740001;
+  color: #D3A625;
+  text-align: center;
+  padding: 20px;
+}
+
+.title-wrap h1 {
+  font-size: 36px;
+  font-weight: 900;
+  line-height: 1.3;
+  margin-bottom: 10px;
+}
+.subtitle {
+  font-size: 16px;
+  font-weight: 500;
+  letter-spacing: 2px;
+  opacity: 0.8;
+  margin-bottom: 60px;
+}
+
+.start-btn {
+  background-color: #D3A625;
+  color: #740001;
+  border: none;
+  border-radius: 50px;
+  padding: 18px 60px;
+  font-size: 24px;
+  font-weight: 900;
+  cursor: pointer;
+  box-shadow: 0 6px 0 #a67c1e;
+  transition: all 0.1s;
+}
+.start-btn:active {
+  transform: translateY(6px);
+  box-shadow: 0 0 0 #a67c1e;
+}
+
+/* --- 본 화면 --- */
+#game-screen {
+  padding: 20px;
+  background-color: #fcfcfc;
+}
+
+/* 헤더 영역 */
+.header {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  margin-bottom: 20px;
+}
+
+.stage-info {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.stage-badge {
+  background-color: #333;
+  color: #fff;
+  padding: 6px 16px;
+  border-radius: 20px;
+  font-size: 18px;
+  font-weight: 800;
+  display: inline-block;
+  width: max-content;
+}
+
+.progress-text {
+  font-size: 15px;
+  font-weight: 700;
+  color: #666;
+  padding-left: 5px;
+}
+
+.timer-box {
+  border: 3px solid #740001;
+  color: #740001;
+  padding: 8px 20px;
+  font-size: 24px;
+  font-weight: 900;
+  border-radius: 15px;
+  background-color: #fff;
+  box-shadow: 4px 4px 0 #740001; /* 레트로하고 팝한 느낌의 그림자 */
+}
+
+/* 문제 출력 영역 */
+.question-box {
+  flex: 1;
+  background-color: #fff;
+  border: 3px solid #eee;
+  border-radius: 25px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  padding: 30px;
+  margin-bottom: 20px;
+  box-shadow: inset 0 0 20px rgba(0,0,0,0.02);
+  text-align: center;
+}
+
+.st1-text {
+  font-size: 52px;
+  font-weight: 900;
+  letter-spacing: -1px;
+}
+.st1-prefix {
+  color: #222;
+  margin-bottom: 15px;
+}
+.st1-suffix {
+  color: #740001;
+}
+
+.st2-text {
+  font-size: 40px;
+  font-weight: 800;
+  color: #222;
+  word-break: keep-all;
+  line-height: 1.4;
+}
+
+/* 결과 텍스트 */
+.result-text {
+  font-size: 70px;
+  font-weight: 900;
+}
+.fin-text {
+  color: #D3A625;
+  text-shadow: 3px 3px 0 #740001;
+}
+.over-text {
+  color: #740001;
+  line-height: 1.1;
+}
+
+/* --- 하단 컨트롤 버튼 --- */
+.controls {
+  display: flex;
+  gap: 12px;
+  height: 90px;
+  padding-bottom: 5px;
+}
+
+.ctrl-btn {
+  flex: 1;
+  border: none;
+  border-radius: 20px;
+  font-size: 22px;
+  font-weight: 900;
+  cursor: pointer;
+  color: #fff;
+  box-shadow: 0 6px 0 rgba(0,0,0,0.2);
+  transition: transform 0.1s, box-shadow 0.1s;
+}
+
+.ctrl-btn:active:not(:disabled) {
+  transform: translateY(6px);
+  box-shadow: 0 0 0 rgba(0,0,0,0);
+}
+
+.ctrl-btn:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+  transform: translateY(6px);
+  box-shadow: 0 0 0 rgba(0,0,0,0);
+}
+
+.btn-fail { background-color: #E53935; }
+.btn-pass { background-color: #43A047; }
+.btn-reset { 
+  background-color: #E0E0E0; 
+  color: #555;
+  box-shadow: 0 6px 0 #BDBDBD;
+}
